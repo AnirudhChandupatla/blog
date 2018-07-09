@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Anirudh Chandupatla</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style media="screen">
+    *{
+      font-family:  'Indie Flower';
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+    .nav {
+      background: rgba(0,0,0,0.5);
+      height: 65px;
+    }
+    .btn:hover{
+      background-color: green;
+      font-size: 20px;
+      color: white;
+    }
+    .btn {
+      color: white;
+      font-size: 20px;
+    }
+    #ab p{
+      color: white;
+      font-size: 2em;
+      margin-bottom: 10%;
+    }
+    .parallax{
+       background-attachment: fixed;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+       text-align: center;
+    }
+    .parallax h2{
+       color: white;
+       font-weight: normal;
+       font-size: 6em;
+       padding: 2em 0;
+       margin: 0;
+       font-family: 'Indie Flower';
+       text-shadow: 1px 1px 2px black;
+       border-radius: 6%;
+    }
+    .parallax.home {
+       background-image: url("images/intro.jpg");
+    }
+   .parallax.work{
+       background-image: url("images/ph2");
+    }
+    .parallax.about{
+       background-image: url("images/ph3");
+    }
+    .zoom {
+      padding: 10px;
+      display: block;
+      background-color: rgba(0,0,0,0.7);
+      transition: transform .3s;
+      width: 270px;
+      height: 220px;
+      margin:  auto;
+      text-align: center;
+      padding: 15px 5px 5px 5px;
+      margin: 30px;
+      border-radius: 15%;
+      align-items: center;
+    }
+    .zoom:hover {
+       transform: scale(1.3);
+    }
+    .zoom a{
+      font-size:3em;
+      text-decoration:none;
+      color:white;
+    }
+    .parallax.contact{
+       background-image: url("images/ph4");
+    }
+    #fname , #lname , #subject {
+          font-family: sans-serif;
+    }
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    shadow: 10%;
+}
+
+input[type=submit] {
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: green;
+    transform: scale(1.3);
+}
+input[type=text]{
+  font-family: monospace;
+  color: black;
+}
+
+#txtcn {
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0);
+    padding: 20px;
+}
+    #cn ul li {
+    	display: inline-block;
+    	margin: 0 20px;
+      opacity: 75%;
+      padding: 0px;
+    }
+    #cn img:hover{
+      transform: scale(1.3);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="nav navbar-fixed-top" style="padding: 10px">
+      <a href="#hm" class="btn"> Home</a>
+      <a href="#ab" class="btn"> About Me</a>
+      <a href="#mr" class="btn"> My Recent Work</a>
+      <a href="#cn" class="btn"> Contacts</a>
+  </div>
+  <div class="parallax home" id="hm">
+    <h2> Anirudh Chandupatla </h2>
+  </div>
+
+  <div class="parallax about" id="ab">
+    <h2> About Me </h2>
+    <div class="container" >
+        <p>My self I am Chandupatla Anirudh Reddy , born and raised in Hyderabad India.Currently I am pursuing my Bachelor's in Computer Science Engineering here only at Hyderabad.I am also currently studying about machine learning and I will be using this website to publish my future work.
+        </p>
+        <p>With Machine learning and AI there's gonna be massive shift coming in the near future.One thing that I personally like about ML is , an ML engineer can get a chance to work with a space researcher or doctor and what I mean is, by being an ML engineer we get a chance to study about various spectrum of litretures.
+        </p>
+    </div>
+  </div>
+
+  <div class="parallax work" id="mr">
+     <h2 style="padding-top: 120px; padding-bottom: 120px;">My Recent Work</h2>
+     <div class="container">
+       <div class="row" style="margin-bottom: 10%">
+
+         <div class="col-sm-1 col-md-3  zoom" style="padding-top: 35px;">
+           <a href="https://github.com/anirudh991/My-ML-Notes/blob/master/K-Nearest-Neighbours/K_Nearest_Neighbors.ipynb" >KNN Short notes</a>
+         </div>
+         <div class="col-sm-1 col-md-3 zoom"><a href="https://github.com/anirudh991/Habermanns-Data-Set-Analysis/blob/master/Habermann%20dataset%20analysis/Haberman_s_Data_Set_Analysis.ipynb">Haberman Data Set Analysis</a></div>
+        <div class="col-sm-1 col-md-3 zoom"> <a href="">more on the way</a></div>
+
+       </div>
+     <!--
+       <div class="row" style="margin-bottom: 10%;">
+         <div class="col-sm-1 col-md-3 zoom"> <a href="#" style="font-size:3em;text-decoration:none;color:white">more on the way</a> </div>
+         <div class="col-sm-1 col-md-3 zoom"> <a href="#" style="font-size:3em;text-decoration:none;color:white">more on the way</a></div>
+         <div class="col-sm-1 col-md-3 zoom"> <a href="#" style="font-size:3em;text-decoration:none;color:white">more on the way</a></div>
+       </div>
+     -->
+     </div>
+  </div>
+
+  <div class="parallax contact" id="cn">
+    <h2 style="padding-top: 100px; padding-bottom: 120px;">Contacts</h2>
+    <div class="container" id="txtcn">
+      <form action="https://formspree.io/anirudhchandupatla99@gmail.com" method="POST">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="firstname" >
+          </div>
+          <div class="col-md-6">
+            <label for="lname">Email</label>
+            <input type="email" id="email" name="lastname" >
+          </div>
+        </div>
+        <label for="subject">Message</label>
+        <textarea id="message" name="message"  style="height:200px;color:black;font-family:monospace"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="container" style="display: block;padding-top: 50px;">
+     <ul style="padding:0px">
+       <li><a href="https://github.com/anirudh991"><div class="col-md-3"><img src="images/gh.png" alt=""></div></a></li>
+       <li><a href="https://www.linkedin.com/in/anirudh-reddy-70198488/"><div class="col-md-3"><img src="images/in.png" alt=""></div></a></li>
+       <li><a href="https://www.facebook.com/anirudh.chandupatla"><div class="col-md-3"><img src="images/fb.png" alt=""></div></a></li>
+     </ul>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $('.btn').click(function() {
+    $('body,html').animate(
+      {scrollTop: $(this.hash).offset().top},
+      2500 );
+  });
+  </script>
+
+</body>
+</html>
