@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600&display=swap">
   <style>
     :root {
       --accent:  #00d4aa;
@@ -24,8 +24,12 @@
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0; padding: 0;
-      font-family: 'Indie Flower', cursive;
+      font-family: 'Inter', sans-serif;
       color: var(--text);
+    }
+
+    h1, h2, h3, h4, .section-title, .hero-name {
+      font-family: 'Poppins', sans-serif;
     }
 
     body { background: #0a0a14; overflow-x: hidden; }
@@ -176,13 +180,14 @@
       display: inline-flex; align-items: center; gap: 7px;
       padding: 10px 22px;
       border-radius: 9px;
-      font-family: 'Indie Flower', cursive;
+      font-family: 'Inter', sans-serif;
       font-size: 1.05em;
       text-decoration: none;
       border: 1px solid;
       transition: background 0.22s, transform 0.18s, border-color 0.22s;
       cursor: pointer;
       text-shadow: none;
+      background: none;
     }
     .btn-teal {
       background: rgba(0,212,170,0.12);
@@ -363,7 +368,7 @@
       color: var(--accent);
       padding: 10px 28px;
       border-radius: 9px;
-      font-family: 'Indie Flower', cursive;
+      font-family: 'Inter', sans-serif;
       font-size: 1.05em;
       cursor: pointer;
       transition: background 0.22s, transform 0.18s;
@@ -433,7 +438,7 @@
     </div>
     <div class="hero-cta fade-up delay-3">
       <a href="#rs" class="btn-modern btn-teal"><i class="fa fa-download"></i> Resume</a>
-      <a href="#pj" class="btn-modern btn-purple"><i class="fa fa-code"></i> Projects</a>
+      <a href="#pj" class="btn-modern btn-purple"><i class="fa fa-rocket"></i> Projects</a>
     </div>
   </section>
 
@@ -464,7 +469,7 @@
         </div>
         <div class="col-sm-4" style="margin-bottom:16px;">
           <div class="role-chip">
-            <i class="fa fa-cogs"></i>
+            <i class="fa fa-magic"></i>
             <p>AI Engineer</p>
             <small>Apr 2024 – Nov 2025</small>
           </div>
@@ -557,7 +562,7 @@
             <p class="cgpa">CGPA: <strong>7.26 / 10</strong></p>
             <div style="margin-top:18px;">
               <a href="files/bits-mtech-degree.jpg" target="_blank" class="btn-modern btn-purple">
-                <i class="fa fa-id-card-o"></i> View Certificate
+                <i class="fa fa-picture-o"></i> View Certificate
               </a>
             </div>
           </div>
@@ -592,7 +597,7 @@
         <p class="score">Score: <strong>377</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Rank: <strong>22,588</strong></p>
         <p class="reg">Reg No: CS26S31516272</p>
         <a href="files/gate-scorecard.pdf" target="_blank" class="btn-modern btn-teal">
-          <i class="fa fa-file-pdf-o"></i> View Score Card
+          <i class="fa fa-trophy"></i> View Score Card
         </a>
       </div>
 
@@ -647,7 +652,7 @@
       <div class="row fade-up delay-2">
         <div class="col-md-10 col-md-offset-1" style="margin-bottom:24px;">
           <div class="project-card">
-            <h3><i class="fa fa-th"></i>Simple RISC-V Processor</h3>
+            <h3><i class="fa fa-bolt"></i>Simple RISC-V Processor</h3>
             <p>
               Designed and simulated in Logisim — every digital component laid out and connected by hand.
               Supports 20 instructions; executes assembly programs including factorial in Simple RISC assembly.
@@ -669,7 +674,7 @@
       <div class="row fade-up delay-3">
         <div class="col-md-6 col-md-offset-3">
           <div class="project-card" style="opacity:0.62;">
-            <h3><i class="fa fa-cogs"></i>ADP GenAI Document Extractor</h3>
+            <h3><i class="fa fa-magic"></i>ADP GenAI Document Extractor</h3>
             <p>
               Multimodal LLM-powered document schema analyzer &amp; self-correcting data extractor — 95–99% accuracy.
               <br><em style="color:var(--muted);">Internal enterprise project</em>
@@ -704,7 +709,9 @@
             </div>
             <label for="message">Message</label>
             <textarea id="message" name="message"></textarea>
-            <input type="submit" value="Send Message">
+            <button type="submit" class="btn-modern btn-teal">
+              <i class="fa fa-paper-plane"></i> Send Message
+            </button>
           </form>
 
           <div class="social-links fade-up delay-3">
