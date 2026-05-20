@@ -11,16 +11,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower" type="text/css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style media="screen">
-    *{
-      font-family:  'Indie Flower';
+    * {
+      font-family: 'Indie Flower';
       color: white;
       text-shadow: 1px 1px 2px black;
     }
     .nav {
       background: rgba(0,0,0,0.5);
       height: 65px;
+      overflow-x: auto;
+      white-space: nowrap;
     }
-    .btn:hover{
+    .btn:hover {
       background-color: green;
       font-size: 20px;
       color: white;
@@ -29,36 +31,25 @@
       color: white;
       font-size: 20px;
     }
-    #ab p{
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+    }
+    .parallax h2 {
       color: white;
-      font-size: 2em;
-      margin-bottom: 10%;
-    }
-    .parallax{
-       background-attachment: fixed;
-       background-position: center;
-       background-repeat: no-repeat;
-       background-size: cover;
-       text-align: center;
-    }
-    .parallax h2{
-       color: white;
-       font-weight: normal;
-       font-size: 6em;
-       padding: 2em 0;
-       margin: 0;
-       font-family: 'Indie Flower';
-       text-shadow: 1px 1px 2px black;
-       border-radius: 6%;
+      font-weight: normal;
+      font-size: 6em;
+      padding: 1.2em 0 0.4em 0;
+      margin: 0;
+      font-family: 'Indie Flower';
+      text-shadow: 1px 1px 2px black;
+      border-radius: 6%;
     }
     .parallax.home {
-       background-image: url("images/intro.jpg");
-    }
-   .parallax.work{
-       background-image: url("images/ph2");
-    }
-    .parallax.about{
-       background-image: url("images/ph3");
+      background-image: url("images/intro.jpg");
     }
     .zoom {
       padding: 10px;
@@ -67,7 +58,7 @@
       transition: transform .3s;
       width: 270px;
       height: 220px;
-      margin:  auto;
+      margin: auto;
       text-align: center;
       padding: 15px 5px 5px 5px;
       margin: 30px;
@@ -75,153 +66,398 @@
       align-items: center;
     }
     .zoom:hover {
-       transform: scale(1.3);
+      transform: scale(1.3);
     }
-    .zoom a{
-      font-size:3em;
-      text-decoration:none;
-      color:white;
+    .zoom a {
+      font-size: 3em;
+      text-decoration: none;
+      color: white;
     }
-    .parallax.contact{
-       background-image: url("images/ph4");
+    .zoom-sm {
+      display: block;
+      background-color: rgba(0,0,0,0.7);
+      transition: transform .3s;
+      width: 160px;
+      height: 160px;
+      margin: 15px auto;
+      text-align: center;
+      padding: 20px 8px 8px 8px;
+      border-radius: 15%;
     }
-    #fname , #lname , #subject {
-          font-family: sans-serif;
+    .zoom-sm:hover {
+      transform: scale(1.3);
     }
-
-input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-    shadow: 10%;
-}
-
-input[type=submit] {
-    background-color: rgba(0,0,0,0.3);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: green;
-    transform: scale(1.3);
-}
-input[type=text]{
-  font-family: monospace;
-  color: black;
-}
-
-#txtcn {
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0);
-    padding: 20px;
-}
+    .zoom-sm a {
+      font-size: 1.8em;
+      text-decoration: none;
+      color: white;
+    }
+    .zoom-sm a i {
+      display: block;
+      margin-bottom: 8px;
+    }
+    .skill-tag {
+      display: inline-block;
+      background: rgba(0,128,0,0.5);
+      border-radius: 20px;
+      padding: 4px 14px;
+      margin: 4px;
+      font-size: 0.95em;
+    }
+    .dark-card {
+      background: rgba(0,0,0,0.7);
+      border-radius: 12px;
+      padding: 25px 30px;
+      margin: 15px auto;
+      text-align: left;
+    }
     #cn ul li {
-    	display: inline-block;
-    	margin: 0 20px;
+      display: inline-block;
+      margin: 0 20px;
       opacity: 75%;
       padding: 0px;
     }
-    #cn img:hover{
+    #cn img:hover {
       transform: scale(1.3);
     }
-
+    input[type=text], select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+    input[type=submit] {
+      background-color: rgba(0,0,0,0.3);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type=submit]:hover {
+      background-color: green;
+      transform: scale(1.3);
+    }
+    input[type=text] {
+      font-family: monospace;
+      color: black;
+    }
+    #txtcn {
+      border-radius: 5px;
+      background-color: rgba(0,0,0,0);
+      padding: 20px;
+    }
+    .section-body {
+      padding-bottom: 60px;
+    }
+    .role-chip {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 5px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <div class="nav navbar-fixed-top" style="padding: 10px">
-      <a href="#hm" class="btn"> Home</a>
-      <a href="#ab" class="btn"> About Me</a>
-      <a href="#mr" class="btn"> My Recent Work</a>
-      <a href="#cn" class="btn"> Contacts</a>
-  </div>
-  <div class="parallax home" id="hm">
-    <h2> Anirudh Chandupatla </h2>
+    <a href="#hm" class="btn">Home</a>
+    <a href="#ab" class="btn">About</a>
+    <a href="#rs" class="btn">Resume</a>
+    <a href="#ed" class="btn">Education</a>
+    <a href="#gt" class="btn">GATE</a>
+    <a href="#pj" class="btn">Projects</a>
+    <a href="#cn" class="btn">Contacts</a>
   </div>
 
-  <div class="parallax about" id="ab">
-    <h2> About Me </h2>
-    <div class="container" >
-        <p>My self I am Chandupatla Anirudh Reddy , born and raised in Hyderabad India.Currently I am pursuing my Bachelor's in Computer Science Engineering here only at Hyderabad.I am also currently studying about machine learning and I will be using this website to publish my future work.
+  <!-- HOME -->
+  <div class="parallax home" id="hm">
+    <h2>Anirudh Chandupatla</h2>
+    <p style="font-size: 1.6em; padding-bottom: 3em;">Senior Data / AI Engineer &nbsp;|&nbsp; BITS Pilani MTech &nbsp;|&nbsp; Hyderabad, India</p>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="parallax" id="ab" style="background-image: url('images/ph3'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <h2>About Me</h2>
+    <div class="container section-body">
+      <div class="dark-card" style="max-width: 820px; text-align: center; margin: 0 auto 35px auto;">
+        <p style="font-size: 1.35em; line-height: 1.7; margin: 0;">
+          Hi, I'm <strong>Anirudh Reddy Chandupatla</strong> — a Senior Data / AI Engineer based in Hyderabad, India.
+          At <strong>ADP</strong> I build enterprise data pipelines, production ML systems, and GenAI-powered tools using
+          Python, Databricks, Spark, and AWS. I hold an <strong>MTech in Data Science &amp; Engineering from BITS Pilani</strong>
+          (WILP) and qualified <strong>GATE CS 2026</strong>.
         </p>
-        <p>With Machine learning and AI there's gonna be massive shift coming in the near future.One thing that I personally like about ML is , an ML engineer can get a chance to work with a space researcher or doctor and what I mean is, by being an ML engineer we get a chance to study about various spectrum of litretures.
-        </p>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="role-chip">
+            <i class="fa fa-database fa-2x"></i>
+            <p style="font-size: 1.1em; margin-top: 8px;">Data Engineer<br><small>Dec 2025 – Present</small></p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="role-chip">
+            <i class="fa fa-cogs fa-2x"></i>
+            <p style="font-size: 1.1em; margin-top: 8px;">AI Engineer<br><small>Apr 2024 – Nov 2025</small></p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="role-chip">
+            <i class="fa fa-code fa-2x"></i>
+            <p style="font-size: 1.1em; margin-top: 8px;">Software Engineer<br><small>Nov 2020 – Mar 2025</small></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="parallax work" id="mr">
-     <h2 style="padding-top: 120px; padding-bottom: 120px;">My Recent Work</h2>
-     <div class="container" style="padding-left: 110px;">
-       <div class="row">
-
-         <div class="col-sm-1 col-md-3  zoom" style="padding-top: 35px;">
-           <a href="ml-notes/K_Nearest_Neighbors.html" >K-Nearest Neighbors</a>
-         </div>
-         <div class="col-sm-1 col-md-3 zoom" style="padding-top: 67px;">
-           <a href="ml-notes/Naive_Bayes.html">Naive Bayes</a>
-         </div>
-         <div class="col-sm-1 col-md-3 zoom" style="padding-top: 35px;">
-           <a href="ml-notes/General_Miscellaneous.html">General and Miscellaneous</a>
-         </div>
-
-       </div>
- 
-       <div class="row" style="margin-bottom: 10%;">
-         <div class="col-sm-1 col-md-3 zoom"> 
-           <a href="projects/Haberman_Data_Set_Analysis.html" >Haberman Data Set Analysis</a>
-         </div>
-         <div class="col-sm-1 col-md-3 zoom" style="padding-top: 35px;"> 
-           <a href="ml-notes/Logistic_Regression.html">Logistic Regression</a>
-         </div>
-         <div class="col-sm-1 col-md-3 zoom"> <a href="#" >more on the way</a></div>
-       </div>
- 
-     </div>
+  <!-- RESUME -->
+  <div class="parallax" id="rs" style="background-image: url('images/ph1'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <h2>Resume</h2>
+    <div class="container section-body">
+      <div style="margin: 10px 0 35px 0;">
+        <a href="files/resume.pdf" download class="btn"
+           style="background: rgba(0,100,0,0.7); padding: 14px 30px; border-radius: 8px; font-size: 1.3em;">
+          <i class="fa fa-download"></i>&nbsp; Download Resume (PDF)
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="dark-card">
+            <h3 style="border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
+              <i class="fa fa-briefcase"></i>&nbsp; Experience — ADP
+            </h3>
+            <ul style="list-style: none; padding: 0; font-size: 1.1em; line-height: 2.2;">
+              <li><i class="fa fa-circle" style="font-size: 0.5em; vertical-align: middle;"></i>&nbsp;
+                <strong>Senior Member Technical, Data Engineer</strong><br>
+                <span style="font-size: 0.85em; padding-left: 16px;">Dec 2025 – Present</span>
+              </li>
+              <li style="margin-top: 6px;"><i class="fa fa-circle" style="font-size: 0.5em; vertical-align: middle;"></i>&nbsp;
+                <strong>Senior Member Technical, AI Engineer</strong><br>
+                <span style="font-size: 0.85em; padding-left: 16px;">Apr 2024 – Nov 2025</span>
+              </li>
+              <li style="margin-top: 6px;"><i class="fa fa-circle" style="font-size: 0.5em; vertical-align: middle;"></i>&nbsp;
+                <strong>Member Technical, Software Engineer</strong><br>
+                <span style="font-size: 0.85em; padding-left: 16px;">Nov 2020 – Mar 2025</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="dark-card">
+            <h3 style="border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
+              <i class="fa fa-wrench"></i>&nbsp; Skills
+            </h3>
+            <div style="font-size: 1.05em; line-height: 2.4; margin-top: 10px;">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">AI / ML</span>
+              <span class="skill-tag">Databricks</span>
+              <span class="skill-tag">Apache Spark</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Spring</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">AWS</span>
+              <span class="skill-tag">GenAI / LLMs</span>
+              <span class="skill-tag">ETL Pipelines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="parallax contact" id="cn">
-    <h2 style="padding-top: 100px; padding-bottom: 120px;">Contacts</h2>
+  <!-- EDUCATION -->
+  <div class="parallax" id="ed" style="background-image: url('images/ph2'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <h2>Education</h2>
+    <div class="container section-body">
+      <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+
+        <div class="col-md-5">
+          <div class="dark-card" style="min-height: 260px;">
+            <h3><i class="fa fa-graduation-cap"></i>&nbsp; MTech</h3>
+            <p style="font-size: 1.2em;"><strong>Data Science &amp; Engineering</strong></p>
+            <p>Birla Institute of Technology &amp; Science, Pilani (WILP)</p>
+            <p>2022 – 2024</p>
+            <p>CGPA: <strong>7.26 / 10</strong></p>
+            <a href="files/bits-mtech-degree.jpg" target="_blank" class="btn"
+               style="background: rgba(0,80,0,0.6); margin-top: 10px; padding: 8px 18px; font-size: 1em; display: inline-block;">
+              <i class="fa fa-id-card-o"></i>&nbsp; View Certificate
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="dark-card" style="min-height: 260px;">
+            <h3><i class="fa fa-graduation-cap"></i>&nbsp; BTech</h3>
+            <p style="font-size: 1.2em;"><strong>Computer Science &amp; Engineering</strong></p>
+            <p>ACE Engineering College, Hyderabad</p>
+            <p>2016 – 2020</p>
+            <p>CGPA: <strong>6.98 / 10</strong></p>
+            <a href="files/btech-degree.pdf" target="_blank" class="btn"
+               style="background: rgba(0,80,0,0.6); margin-top: 10px; padding: 8px 18px; font-size: 1em; display: inline-block;">
+              <i class="fa fa-file-pdf-o"></i>&nbsp; View Certificate
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- GATE -->
+  <div class="parallax" id="gt" style="background-image: url('images/ph4'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <h2>GATE CS 2026</h2>
+    <div class="container section-body">
+
+      <div class="dark-card" style="max-width: 480px; margin: 0 auto 40px auto; text-align: center;">
+        <p style="font-size: 1.6em; margin: 0 0 6px 0;">
+          Score: <strong>377</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Rank: <strong>22,588</strong>
+        </p>
+        <p style="font-size: 0.9em; opacity: 0.8; margin: 0 0 14px 0;">Reg No: CS26S31516272</p>
+        <a href="files/gate-scorecard.pdf" target="_blank" class="btn"
+           style="background: rgba(0,80,0,0.6); padding: 8px 20px; font-size: 1em; display: inline-block;">
+          <i class="fa fa-file-pdf-o"></i>&nbsp; View Score Card
+        </a>
+      </div>
+
+      <h3 style="margin-bottom: 25px; font-size: 2em;">Subject Notes</h3>
+      <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+
+        <div class="col-sm-4 col-md-2 zoom-sm">
+          <a href="https://drive.google.com/drive/folders/1C5kT04GCFcmwqf2ZH5v_lrukHaLXvL6q" target="_blank">
+            <i class="fa fa-sitemap fa-2x"></i>
+            Digital Logic
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-md-2 zoom-sm">
+          <a href="https://drive.google.com/file/d/1X_xXDAjauij5un26ZZyEPyJ-ptb-iEML/view?usp=drivesdk" target="_blank">
+            <i class="fa fa-desktop fa-2x"></i>
+            Operating Systems
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-md-2 zoom-sm">
+          <a href="https://drive.google.com/drive/folders/1_J6E5zOwwQ_6PrHfh2WudcFpU50IkUdi" target="_blank">
+            <i class="fa fa-database fa-2x"></i>
+            Databases
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-md-2 zoom-sm">
+          <a href="https://drive.google.com/drive/folders/1vsKwHXBQkB__UOmXily8istK7ZGgdQaQ" target="_blank">
+            <i class="fa fa-wifi fa-2x"></i>
+            Networking
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-md-2 zoom-sm">
+          <a href="https://drive.google.com/file/d/1IA6Yvw2__sLBAnvArPAiJNqVwks46AzQ/view?usp=drivesdk" target="_blank">
+            <i class="fa fa-superscript fa-2x"></i>
+            Linear Algebra
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-md-2 zoom-sm">
+          <a href="https://drive.google.com/file/d/1pYyAtvvGeXtvCj6Uuo6_uuUysDMYujTu/view?usp=drivesdk" target="_blank">
+            <i class="fa fa-line-chart fa-2x"></i>
+            Calculus
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="parallax" id="pj" style="background-image: url('images/ph1'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <h2>Projects</h2>
+    <div class="container section-body">
+
+      <!-- Featured: Simple RISC-V Processor -->
+      <div class="row" style="margin-bottom: 40px;">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="dark-card" style="text-align: center;">
+            <h3 style="font-size: 1.8em; margin-bottom: 10px;">
+              <i class="fa fa-th"></i>&nbsp; Simple RISC-V Processor
+            </h3>
+            <p style="font-size: 1.1em; margin-bottom: 16px; opacity: 0.85;">
+              Simulated in Logisim — supports 20 instructions, executes assembly programs.
+              Every digital component laid out and connected by hand; runs factorial in Simple RISC assembly.
+            </p>
+            <img src="https://raw.githubusercontent.com/AnirudhChandupatla/CS/main/Computer_Organization_and_Architecture/simple_risc_cpu_factorial_execution.gif"
+                 alt="RISC-V processor executing factorial program in Logisim"
+                 loading="lazy"
+                 style="max-width: 100%; max-height: 440px; border-radius: 8px; margin: 10px 0 20px 0; border: 2px solid rgba(255,255,255,0.2);">
+            <br>
+            <a href="https://github.com/AnirudhChandupatla/CS/tree/main/Computer_Organization_and_Architecture"
+               target="_blank" class="btn"
+               style="background: rgba(0,80,0,0.6); padding: 10px 22px; font-size: 1.1em; display: inline-block;">
+              <i class="fa fa-github"></i>&nbsp; View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADP GenAI (internal) -->
+      <div class="row" style="justify-content: center;">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="dark-card" style="text-align: center; opacity: 0.65;">
+            <h3 style="font-size: 1.4em;">
+              <i class="fa fa-cogs"></i>&nbsp; ADP GenAI Document Extractor
+            </h3>
+            <p style="font-size: 1em;">
+              Multimodal LLM-powered document schema analyzer &amp; self-correcting data extractor — 95–99% accuracy.
+              <br><em>(Internal enterprise project)</em>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACTS -->
+  <div class="parallax" id="cn" style="background-image: url('images/ph4'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <h2 style="padding-top: 100px; padding-bottom: 60px;">Contacts</h2>
     <div class="container" id="txtcn">
       <form action="https://formspree.io/anirudhchandupatla99@gmail.com" method="POST">
         <div class="row">
           <div class="col-md-6">
             <label for="fname">Name</label>
-            <input type="text" id="fname" name="firstname" >
+            <input type="text" id="fname" name="firstname">
           </div>
           <div class="col-md-6">
-            <label for="lname">Email</label>
-            <input type="text" id="email" name="lastname" >
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
           </div>
         </div>
-        <label for="subject">Message</label>
-        <textarea id="message" name="message"  style="height:200px;color:black;font-family:monospace"></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" style="height:200px; color:black; font-family:monospace;"></textarea>
         <input type="submit" value="Submit">
       </form>
     </div>
-    <div class="container" style="display: block;padding-top: 50px;">
-     <ul style="padding:0px">
-       <li><a href="https://github.com/anirudh991"><div class="col-md-3"><img src="images/gh.png" alt=""></div></a></li>
-       <li><a href="https://www.linkedin.com/in/anirudh-reddy-70198488/"><div class="col-md-3"><img src="images/in.png" alt=""></div></a></li>
-       <li><a href="https://www.facebook.com/anirudh.chandupatla"><div class="col-md-3"><img src="images/fb.png" alt=""></div></a></li>
-     </ul>
+    <div class="container" style="display: block; padding-top: 50px; padding-bottom: 60px;">
+      <ul style="padding: 0px">
+        <li><a href="https://github.com/AnirudhChandupatla"><div class="col-md-3"><img src="images/gh.png" alt="GitHub"></div></a></li>
+        <li><a href="https://www.linkedin.com/in/anirudh-reddy-chandupatla/"><div class="col-md-3"><img src="images/in.png" alt="LinkedIn"></div></a></li>
+      </ul>
     </div>
   </div>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-  $('.btn').click(function() {
-    $('body,html').animate(
-      {scrollTop: $(this.hash).offset().top},
-      2500 );
-  });
+    $('.btn').click(function() {
+      var target = $(this.hash);
+      if (target.length) {
+        $('body,html').animate({ scrollTop: target.offset().top }, 2500);
+      }
+    });
   </script>
 
 </body>
