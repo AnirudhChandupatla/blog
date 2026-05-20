@@ -6,254 +6,522 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower" type="text/css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style media="screen">
-    * {
-      font-family: 'Indie Flower';
-      color: white;
-      text-shadow: 1px 1px 2px black;
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap">
+  <style>
+    :root {
+      --accent:  #00d4aa;
+      --accent2: #7c6fff;
+      --glass:         rgba(255,255,255,0.05);
+      --glass-border:  rgba(255,255,255,0.09);
+      --glass-hover:   rgba(255,255,255,0.09);
+      --text:   #e4e4f0;
+      --muted:  rgba(228,228,240,0.52);
     }
-    .nav {
-      background: rgba(0,0,0,0.5);
-      height: 65px;
+
+    html { scroll-behavior: smooth; }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Indie Flower', cursive;
+      color: var(--text);
+    }
+
+    body { background: #0a0a14; overflow-x: hidden; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      height: 60px;
+      display: flex; align-items: center;
+      padding: 0 20px;
+      gap: 4px;
+      background: rgba(8,8,18,0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--glass-border);
       overflow-x: auto;
       white-space: nowrap;
+      transition: background 0.35s;
     }
-    .btn:hover {
-      background-color: green;
-      font-size: 20px;
-      color: white;
+    .site-nav a {
+      text-decoration: none;
+      font-size: 1.05em;
+      padding: 6px 15px;
+      border-radius: 7px;
+      transition: background 0.22s, color 0.22s;
+      color: var(--text);
+      text-shadow: none;
     }
-    .btn {
-      color: white;
-      font-size: 20px;
+    .site-nav a:hover {
+      background: rgba(0,212,170,0.13);
+      color: var(--accent);
     }
-    .parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      text-align: center;
-    }
-    .parallax h2 {
-      color: white;
-      font-weight: normal;
-      font-size: 6em;
-      padding: 1.2em 0 0.4em 0;
-      margin: 0;
-      font-family: 'Indie Flower';
-      text-shadow: 1px 1px 2px black;
-      border-radius: 6%;
-    }
-    .parallax.home {
-      background-image: url("images/intro.jpg");
-    }
-    .zoom {
-      padding: 10px;
-      display: block;
-      background-color: rgba(0,0,0,0.7);
-      transition: transform .3s;
-      width: 270px;
-      height: 220px;
-      margin: auto;
-      text-align: center;
-      padding: 15px 5px 5px 5px;
-      margin: 30px;
-      border-radius: 15%;
+
+    /* ── SECTIONS ─────────────────────────────────── */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      padding: 90px 20px 70px;
+      position: relative;
+      overflow: hidden;
     }
-    .zoom:hover {
-      transform: scale(1.3);
+
+    /* dot-grid overlay on every section */
+    section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.032) 1px, transparent 1px);
+      background-size: 26px 26px;
+      pointer-events: none;
+      z-index: 0;
     }
-    .zoom a {
-      font-size: 3em;
-      text-decoration: none;
-      color: white;
-    }
-    .zoom-sm {
-      display: block;
-      background-color: rgba(0,0,0,0.7);
-      transition: transform .3s;
-      width: 160px;
-      height: 160px;
-      margin: 15px auto;
+
+    section > * { position: relative; z-index: 1; }
+    section .container { position: relative; z-index: 1; }
+
+    #hm { background: linear-gradient(145deg, #04040e 0%, #0b0822 55%, #060d24 100%); }
+    #ab { background: linear-gradient(145deg, #050e17 0%, #091e30 60%, #071529 100%); }
+    #rs { background: linear-gradient(145deg, #050f0d 0%, #091f1a 60%, #071814 100%); }
+    #ed { background: linear-gradient(145deg, #0b0712 0%, #180f2e 60%, #110a24 100%); }
+    #gt { background: linear-gradient(145deg, #040d06 0%, #0c1f0e 60%, #081509 100%); }
+    #pj { background: linear-gradient(145deg, #0e0805 0%, #1e120a 60%, #160d06 100%); }
+    #cn { background: linear-gradient(145deg, #060610 0%, #0e0e20 60%, #080815 100%); }
+
+    /* ── SECTION TITLES ───────────────────────────── */
+    .section-title {
+      font-size: 3.2em;
+      font-weight: normal;
+      letter-spacing: 1px;
       text-align: center;
-      padding: 20px 8px 8px 8px;
-      border-radius: 15%;
-    }
-    .zoom-sm:hover {
-      transform: scale(1.3);
-    }
-    .zoom-sm a {
-      font-size: 1.8em;
-      text-decoration: none;
-      color: white;
-    }
-    .zoom-sm a i {
-      display: block;
       margin-bottom: 8px;
+      text-shadow: none;
     }
-    .skill-tag {
-      display: inline-block;
-      background: rgba(0,128,0,0.5);
+    .title-bar {
+      width: 56px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 3px;
+      margin: 0 auto 40px;
+    }
+
+    /* ── GLASS CARD ───────────────────────────────── */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .glass-card:hover {
+      border-color: rgba(0,212,170,0.22);
+    }
+
+    /* ── FADE-UP ENTRANCE ─────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.10s; }
+    .delay-2 { transition-delay: 0.20s; }
+    .delay-3 { transition-delay: 0.30s; }
+    .delay-4 { transition-delay: 0.40s; }
+    .delay-5 { transition-delay: 0.50s; }
+    .delay-6 { transition-delay: 0.60s; }
+
+    /* ── HOME ─────────────────────────────────────── */
+    .hero-name {
+      font-size: 4.8em;
+      font-weight: normal;
+      text-shadow: none;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      font-size: 1.45em;
+      color: var(--muted);
+      margin-top: 14px;
+      text-shadow: none;
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .hero-tag {
+      padding: 6px 18px;
       border-radius: 20px;
-      padding: 4px 14px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      font-size: 1em;
+      text-shadow: none;
+      transition: border-color 0.2s;
+    }
+    .hero-tag:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-cta {
+      margin-top: 36px;
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    }
+
+    /* ── MODERN BUTTONS ───────────────────────────── */
+    .btn-modern {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 10px 22px;
+      border-radius: 9px;
+      font-family: 'Indie Flower', cursive;
+      font-size: 1.05em;
+      text-decoration: none;
+      border: 1px solid;
+      transition: background 0.22s, transform 0.18s, border-color 0.22s;
+      cursor: pointer;
+      text-shadow: none;
+    }
+    .btn-teal {
+      background: rgba(0,212,170,0.12);
+      border-color: rgba(0,212,170,0.35);
+      color: var(--accent) !important;
+    }
+    .btn-teal:hover {
+      background: rgba(0,212,170,0.24);
+      border-color: rgba(0,212,170,0.6);
+      transform: translateY(-2px);
+      color: var(--accent) !important;
+      text-decoration: none;
+    }
+    .btn-purple {
+      background: rgba(124,111,255,0.12);
+      border-color: rgba(124,111,255,0.35);
+      color: var(--accent2) !important;
+    }
+    .btn-purple:hover {
+      background: rgba(124,111,255,0.24);
+      border-color: rgba(124,111,255,0.6);
+      transform: translateY(-2px);
+      color: var(--accent2) !important;
+      text-decoration: none;
+    }
+
+    /* ── ABOUT ROLE CHIPS ─────────────────────────── */
+    .role-chip {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .role-chip:hover { border-color: rgba(0,212,170,0.3); background: var(--glass-hover); }
+    .role-chip i { font-size: 2em; color: var(--accent); display: block; margin-bottom: 10px; text-shadow: none; }
+    .role-chip p { margin: 0; font-size: 1.05em; text-shadow: none; }
+    .role-chip small { color: var(--muted); font-size: 0.88em; text-shadow: none; }
+
+    /* ── SKILLS ───────────────────────────────────── */
+    .skill-tag {
+      display: inline-flex; align-items: center;
+      background: rgba(0,212,170,0.09);
+      border: 1px solid rgba(0,212,170,0.22);
+      border-radius: 20px;
+      padding: 5px 15px;
       margin: 4px;
       font-size: 0.95em;
+      color: var(--accent);
+      text-shadow: none;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .dark-card {
-      background: rgba(0,0,0,0.7);
-      border-radius: 12px;
-      padding: 25px 30px;
-      margin: 15px auto;
-      text-align: left;
+    .skill-tag:hover {
+      background: rgba(0,212,170,0.18);
+      border-color: rgba(0,212,170,0.45);
     }
-    #cn ul li {
-      display: inline-block;
-      margin: 0 20px;
-      opacity: 75%;
-      padding: 0px;
+
+    /* ── EDUCATION CARDS ──────────────────────────── */
+    .edu-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 30px 28px;
+      transition: border-color 0.3s, transform 0.3s;
+      height: 100%;
     }
-    #cn img:hover {
-      transform: scale(1.3);
+    .edu-card:hover { border-color: rgba(124,111,255,0.35); transform: translateY(-4px); }
+    .edu-card h3 { font-size: 1.5em; margin-bottom: 10px; text-shadow: none; }
+    .edu-card h3 i { color: var(--accent2); margin-right: 8px; }
+    .edu-card p { font-size: 1.05em; margin: 5px 0; text-shadow: none; }
+    .edu-card .cgpa { color: var(--accent); font-size: 1.1em; }
+    .edu-card .inst { color: var(--muted); font-size: 0.95em; }
+
+    /* ── GATE SCORE BANNER ────────────────────────── */
+    .gate-banner {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 24px 36px;
+      text-align: center;
+      max-width: 460px;
+      margin: 0 auto 44px;
     }
-    input[type=text], select, textarea {
+    .gate-banner .score { font-size: 2em; text-shadow: none; }
+    .gate-banner .score strong { color: var(--accent); }
+    .gate-banner .reg { color: var(--muted); font-size: 0.88em; margin: 4px 0 16px; text-shadow: none; }
+
+    /* ── SUBJECT CARDS ────────────────────────────── */
+    .subject-card {
+      display: block;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 22px 12px;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+      margin: 8px;
+    }
+    .subject-card:hover {
+      border-color: rgba(0,212,170,0.38);
+      background: rgba(0,212,170,0.07);
+      transform: translateY(-5px);
+      text-decoration: none;
+    }
+    .subject-card i {
+      font-size: 2em; color: var(--accent);
+      display: block; margin-bottom: 10px;
+      text-shadow: none;
+    }
+    .subject-card span { font-size: 1em; color: var(--text); text-shadow: none; }
+
+    /* ── PROJECT CARDS ────────────────────────────── */
+    .project-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .project-card:hover { border-color: rgba(124,111,255,0.38); transform: translateY(-4px); }
+    .project-card h3 { font-size: 1.6em; margin-bottom: 10px; text-shadow: none; }
+    .project-card h3 i { color: var(--accent2); margin-right: 8px; }
+    .project-card p { color: var(--muted); font-size: 1em; line-height: 1.6; text-shadow: none; }
+    .project-card img {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      resize: vertical;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin: 16px 0;
+      border: 1px solid var(--glass-border);
     }
-    input[type=submit] {
-      background-color: rgba(0,0,0,0.3);
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+
+    /* ── EXPERIENCE LIST ──────────────────────────── */
+    .exp-list { list-style: none; padding: 0; }
+    .exp-list li {
+      border-left: 2px solid rgba(0,212,170,0.3);
+      padding: 6px 0 12px 18px;
+      position: relative;
+      text-shadow: none;
     }
-    input[type=submit]:hover {
-      background-color: green;
-      transform: scale(1.3);
+    .exp-list li::before {
+      content: '';
+      position: absolute; left: -5px; top: 10px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
     }
-    input[type=text] {
+    .exp-list li strong { font-size: 1.05em; display: block; }
+    .exp-list li span { color: var(--muted); font-size: 0.9em; }
+
+    /* ── CONTACTS ─────────────────────────────────── */
+    .contact-form input[type=text],
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 9px;
+      margin-bottom: 14px;
       font-family: monospace;
-      color: black;
+      font-size: 0.95em;
+      color: var(--text);
+      transition: border-color 0.2s;
     }
-    #txtcn {
-      border-radius: 5px;
-      background-color: rgba(0,0,0,0);
-      padding: 20px;
+    .contact-form input[type=text]:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: rgba(0,212,170,0.4);
     }
-    .section-body {
-      padding-bottom: 60px;
+    .contact-form textarea { height: 160px; resize: vertical; }
+    .contact-form label { font-size: 1em; display: block; margin-bottom: 4px; color: var(--muted); text-shadow: none; }
+    .contact-form input[type=submit] {
+      background: rgba(0,212,170,0.15);
+      border: 1px solid rgba(0,212,170,0.35);
+      color: var(--accent);
+      padding: 10px 28px;
+      border-radius: 9px;
+      font-family: 'Indie Flower', cursive;
+      font-size: 1.05em;
+      cursor: pointer;
+      transition: background 0.22s, transform 0.18s;
     }
-    .role-chip {
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 15px;
-      margin: 5px;
+    .contact-form input[type=submit]:hover {
+      background: rgba(0,212,170,0.28);
+      transform: translateY(-2px);
+    }
+    .social-links { display: flex; gap: 24px; justify-content: center; margin-top: 36px; }
+    .social-link {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 24px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.05em;
+      transition: border-color 0.22s, background 0.22s, transform 0.18s;
+      color: var(--text) !important;
+      text-shadow: none;
+    }
+    .social-link:hover {
+      border-color: rgba(0,212,170,0.35);
+      background: rgba(0,212,170,0.07);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .social-link i { color: var(--accent); font-size: 1.3em; text-shadow: none; }
+
+    /* ── DIVIDER ──────────────────────────────────── */
+    .section-divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-name    { font-size: 2.8em; }
+      .section-title { font-size: 2.2em; }
+      .glass-card   { padding: 20px 18px; }
+      section       { padding: 80px 14px 50px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <div class="nav navbar-fixed-top" style="padding: 10px">
-    <a href="#hm" class="btn">Home</a>
-    <a href="#ab" class="btn">About</a>
-    <a href="#rs" class="btn">Resume</a>
-    <a href="#ed" class="btn">Education</a>
-    <a href="#gt" class="btn">GATE</a>
-    <a href="#pj" class="btn">Projects</a>
-    <a href="#cn" class="btn">Contacts</a>
-  </div>
+  <!-- ── NAV ─────────────────────────────────────── -->
+  <nav class="site-nav">
+    <a href="#hm">Home</a>
+    <a href="#ab">About</a>
+    <a href="#rs">Resume</a>
+    <a href="#ed">Education</a>
+    <a href="#gt">GATE</a>
+    <a href="#pj">Projects</a>
+    <a href="#cn">Contacts</a>
+  </nav>
 
-  <!-- HOME -->
-  <div class="parallax home" id="hm">
-    <h2>Anirudh Chandupatla</h2>
-    <p style="font-size: 1.6em; padding-bottom: 3em;">Senior Data / AI Engineer &nbsp;|&nbsp; BITS Pilani MTech &nbsp;|&nbsp; Hyderabad, India</p>
-  </div>
+  <!-- ── HOME ─────────────────────────────────────── -->
+  <section id="hm" style="text-align:center; gap: 0;">
+    <h1 class="hero-name fade-up">Anirudh Chandupatla</h1>
+    <p class="hero-sub fade-up delay-1">Senior Data / AI Engineer &nbsp;·&nbsp; Hyderabad, India</p>
+    <div class="hero-tags fade-up delay-2">
+      <span class="hero-tag">MTech · BITS Pilani</span>
+      <span class="hero-tag">ADP</span>
+      <span class="hero-tag">GATE CS 2026</span>
+      <span class="hero-tag">Python · Spark · LLMs</span>
+    </div>
+    <div class="hero-cta fade-up delay-3">
+      <a href="#rs" class="btn-modern btn-teal"><i class="fa fa-download"></i> Resume</a>
+      <a href="#pj" class="btn-modern btn-purple"><i class="fa fa-code"></i> Projects</a>
+    </div>
+  </section>
 
-  <!-- ABOUT -->
-  <div class="parallax" id="ab" style="background-image: url('images/ph3'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <h2>About Me</h2>
-    <div class="container section-body">
-      <div class="dark-card" style="max-width: 820px; text-align: center; margin: 0 auto 35px auto;">
-        <p style="font-size: 1.35em; line-height: 1.7; margin: 0;">
-          Hi, I'm <strong>Anirudh Reddy Chandupatla</strong> — a Senior Data / AI Engineer based in Hyderabad, India.
-          At <strong>ADP</strong> I build enterprise data pipelines, production ML systems, and GenAI-powered tools using
-          Python, Databricks, Spark, and AWS. I hold an <strong>MTech in Data Science &amp; Engineering from BITS Pilani</strong>
-          (WILP) and qualified <strong>GATE CS 2026</strong>.
+  <div class="section-divider"></div>
+
+  <!-- ── ABOUT ─────────────────────────────────────── -->
+  <section id="ab">
+    <div class="container">
+      <h2 class="section-title fade-up">About Me</h2>
+      <div class="title-bar fade-up delay-1"></div>
+
+      <div class="glass-card fade-up delay-1" style="max-width:820px; margin: 0 auto 36px; text-align:center;">
+        <p style="font-size:1.25em; line-height:1.75; text-shadow:none;">
+          Hi, I'm <strong>Anirudh Reddy Chandupatla</strong> — a Senior Data / AI Engineer based in Hyderabad.
+          At <strong>ADP</strong> I build enterprise data pipelines, production ML systems, and GenAI-powered tools
+          using Python, Databricks, Spark, and AWS. I hold an <strong>MTech in Data Science &amp; Engineering
+          from BITS Pilani</strong> (WILP) and qualified <strong>GATE CS 2026</strong>.
         </p>
       </div>
-      <div class="row">
-        <div class="col-sm-4">
+
+      <div class="row fade-up delay-2">
+        <div class="col-sm-4" style="margin-bottom:16px;">
           <div class="role-chip">
-            <i class="fa fa-database fa-2x"></i>
-            <p style="font-size: 1.1em; margin-top: 8px;">Data Engineer<br><small>Dec 2025 – Present</small></p>
+            <i class="fa fa-database"></i>
+            <p>Data Engineer</p>
+            <small>Dec 2025 – Present</small>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="margin-bottom:16px;">
           <div class="role-chip">
-            <i class="fa fa-cogs fa-2x"></i>
-            <p style="font-size: 1.1em; margin-top: 8px;">AI Engineer<br><small>Apr 2024 – Nov 2025</small></p>
+            <i class="fa fa-cogs"></i>
+            <p>AI Engineer</p>
+            <small>Apr 2024 – Nov 2025</small>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="margin-bottom:16px;">
           <div class="role-chip">
-            <i class="fa fa-code fa-2x"></i>
-            <p style="font-size: 1.1em; margin-top: 8px;">Software Engineer<br><small>Nov 2020 – Mar 2025</small></p>
+            <i class="fa fa-code"></i>
+            <p>Software Engineer</p>
+            <small>Nov 2020 – Mar 2025</small>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- RESUME -->
-  <div class="parallax" id="rs" style="background-image: url('images/ph1'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <h2>Resume</h2>
-    <div class="container section-body">
-      <div style="margin: 10px 0 35px 0;">
-        <a href="files/resume.pdf" download class="btn"
-           style="background: rgba(0,100,0,0.7); padding: 14px 30px; border-radius: 8px; font-size: 1.3em;">
-          <i class="fa fa-download"></i>&nbsp; Download Resume (PDF)
+  <div class="section-divider"></div>
+
+  <!-- ── RESUME ─────────────────────────────────────── -->
+  <section id="rs">
+    <div class="container">
+      <h2 class="section-title fade-up">Resume</h2>
+      <div class="title-bar fade-up delay-1"></div>
+
+      <div style="text-align:center; margin-bottom:36px;" class="fade-up delay-1">
+        <a href="files/resume.pdf" download class="btn-modern btn-teal" style="font-size:1.15em; padding:12px 28px;">
+          <i class="fa fa-download"></i> Download Resume (PDF)
         </a>
       </div>
+
       <div class="row">
-        <div class="col-md-6">
-          <div class="dark-card">
-            <h3 style="border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
-              <i class="fa fa-briefcase"></i>&nbsp; Experience — ADP
+        <div class="col-md-6" style="margin-bottom:20px;">
+          <div class="glass-card fade-up delay-2" style="height:100%;">
+            <h3 style="font-size:1.4em; margin-bottom:18px; text-shadow:none;">
+              <i class="fa fa-briefcase" style="color:var(--accent); margin-right:8px;"></i>Experience — ADP
             </h3>
-            <ul style="list-style: none; padding: 0; font-size: 1.1em; line-height: 2.2;">
-              <li><i class="fa fa-circle" style="font-size: 0.5em; vertical-align: middle;"></i>&nbsp;
-                <strong>Senior Member Technical, Data Engineer</strong><br>
-                <span style="font-size: 0.85em; padding-left: 16px;">Dec 2025 – Present</span>
+            <ul class="exp-list">
+              <li>
+                <strong>Senior Member Technical, Data Engineer</strong>
+                <span>Dec 2025 – Present</span>
               </li>
-              <li style="margin-top: 6px;"><i class="fa fa-circle" style="font-size: 0.5em; vertical-align: middle;"></i>&nbsp;
-                <strong>Senior Member Technical, AI Engineer</strong><br>
-                <span style="font-size: 0.85em; padding-left: 16px;">Apr 2024 – Nov 2025</span>
+              <li>
+                <strong>Senior Member Technical, AI Engineer</strong>
+                <span>Apr 2024 – Nov 2025</span>
               </li>
-              <li style="margin-top: 6px;"><i class="fa fa-circle" style="font-size: 0.5em; vertical-align: middle;"></i>&nbsp;
-                <strong>Member Technical, Software Engineer</strong><br>
-                <span style="font-size: 0.85em; padding-left: 16px;">Nov 2020 – Mar 2025</span>
+              <li>
+                <strong>Member Technical, Software Engineer</strong>
+                <span>Nov 2020 – Mar 2025</span>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="dark-card">
-            <h3 style="border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
-              <i class="fa fa-wrench"></i>&nbsp; Skills
+        <div class="col-md-6" style="margin-bottom:20px;">
+          <div class="glass-card fade-up delay-3" style="height:100%;">
+            <h3 style="font-size:1.4em; margin-bottom:18px; text-shadow:none;">
+              <i class="fa fa-wrench" style="color:var(--accent); margin-right:8px;"></i>Skills
             </h3>
-            <div style="font-size: 1.05em; line-height: 2.4; margin-top: 10px;">
+            <div style="line-height:2.3;">
               <span class="skill-tag">Python</span>
               <span class="skill-tag">AI / ML</span>
               <span class="skill-tag">Databricks</span>
@@ -269,195 +537,224 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- EDUCATION -->
-  <div class="parallax" id="ed" style="background-image: url('images/ph2'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <h2>Education</h2>
-    <div class="container section-body">
-      <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+  <div class="section-divider"></div>
 
-        <div class="col-md-5">
-          <div class="dark-card" style="min-height: 260px;">
-            <h3><i class="fa fa-graduation-cap"></i>&nbsp; MTech</h3>
-            <p style="font-size: 1.2em;"><strong>Data Science &amp; Engineering</strong></p>
-            <p>Birla Institute of Technology &amp; Science, Pilani (WILP)</p>
-            <p>2022 – 2024</p>
-            <p>CGPA: <strong>7.26 / 10</strong></p>
-            <a href="files/bits-mtech-degree.jpg" target="_blank" class="btn"
-               style="background: rgba(0,80,0,0.6); margin-top: 10px; padding: 8px 18px; font-size: 1em; display: inline-block;">
-              <i class="fa fa-id-card-o"></i>&nbsp; View Certificate
-            </a>
+  <!-- ── EDUCATION ─────────────────────────────────── -->
+  <section id="ed">
+    <div class="container">
+      <h2 class="section-title fade-up">Education</h2>
+      <div class="title-bar fade-up delay-1"></div>
+
+      <div class="row" style="display:flex; flex-wrap:wrap; justify-content:center;">
+        <div class="col-md-5" style="margin-bottom:20px;">
+          <div class="edu-card fade-up delay-2">
+            <h3><i class="fa fa-graduation-cap"></i>MTech</h3>
+            <p style="font-size:1.15em; margin-bottom:6px;"><strong>Data Science &amp; Engineering</strong></p>
+            <p class="inst">Birla Institute of Technology &amp; Science, Pilani (WILP)</p>
+            <p class="inst" style="margin-bottom:10px;">2022 – 2024</p>
+            <p class="cgpa">CGPA: <strong>7.26 / 10</strong></p>
+            <div style="margin-top:18px;">
+              <a href="files/bits-mtech-degree.jpg" target="_blank" class="btn-modern btn-purple">
+                <i class="fa fa-id-card-o"></i> View Certificate
+              </a>
+            </div>
           </div>
         </div>
-
-        <div class="col-md-5">
-          <div class="dark-card" style="min-height: 260px;">
-            <h3><i class="fa fa-graduation-cap"></i>&nbsp; BTech</h3>
-            <p style="font-size: 1.2em;"><strong>Computer Science &amp; Engineering</strong></p>
-            <p>ACE Engineering College, Hyderabad</p>
-            <p>2016 – 2020</p>
-            <p>CGPA: <strong>6.98 / 10</strong></p>
-            <a href="files/btech-degree.pdf" target="_blank" class="btn"
-               style="background: rgba(0,80,0,0.6); margin-top: 10px; padding: 8px 18px; font-size: 1em; display: inline-block;">
-              <i class="fa fa-file-pdf-o"></i>&nbsp; View Certificate
-            </a>
+        <div class="col-md-5" style="margin-bottom:20px;">
+          <div class="edu-card fade-up delay-3">
+            <h3><i class="fa fa-graduation-cap"></i>BTech</h3>
+            <p style="font-size:1.15em; margin-bottom:6px;"><strong>Computer Science &amp; Engineering</strong></p>
+            <p class="inst">ACE Engineering College, Hyderabad</p>
+            <p class="inst" style="margin-bottom:10px;">2016 – 2020</p>
+            <p class="cgpa">CGPA: <strong>6.98 / 10</strong></p>
+            <div style="margin-top:18px;">
+              <a href="files/btech-degree.pdf" target="_blank" class="btn-modern btn-purple">
+                <i class="fa fa-file-pdf-o"></i> View Certificate
+              </a>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- GATE -->
-  <div class="parallax" id="gt" style="background-image: url('images/ph4'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <h2>GATE CS 2026</h2>
-    <div class="container section-body">
+  <div class="section-divider"></div>
 
-      <div class="dark-card" style="max-width: 480px; margin: 0 auto 40px auto; text-align: center;">
-        <p style="font-size: 1.6em; margin: 0 0 6px 0;">
-          Score: <strong>377</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Rank: <strong>22,588</strong>
-        </p>
-        <p style="font-size: 0.9em; opacity: 0.8; margin: 0 0 14px 0;">Reg No: CS26S31516272</p>
-        <a href="files/gate-scorecard.pdf" target="_blank" class="btn"
-           style="background: rgba(0,80,0,0.6); padding: 8px 20px; font-size: 1em; display: inline-block;">
-          <i class="fa fa-file-pdf-o"></i>&nbsp; View Score Card
+  <!-- ── GATE ──────────────────────────────────────── -->
+  <section id="gt">
+    <div class="container">
+      <h2 class="section-title fade-up">GATE CS 2026</h2>
+      <div class="title-bar fade-up delay-1"></div>
+
+      <div class="gate-banner fade-up delay-2">
+        <p class="score">Score: <strong>377</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Rank: <strong>22,588</strong></p>
+        <p class="reg">Reg No: CS26S31516272</p>
+        <a href="files/gate-scorecard.pdf" target="_blank" class="btn-modern btn-teal">
+          <i class="fa fa-file-pdf-o"></i> View Score Card
         </a>
       </div>
 
-      <h3 style="margin-bottom: 25px; font-size: 2em;">Subject Notes</h3>
-      <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <h3 class="fade-up delay-2" style="text-align:center; font-size:1.8em; margin-bottom:24px; text-shadow:none;">
+        Subject Notes
+      </h3>
 
-        <div class="col-sm-4 col-md-2 zoom-sm">
-          <a href="https://drive.google.com/drive/folders/1C5kT04GCFcmwqf2ZH5v_lrukHaLXvL6q" target="_blank">
-            <i class="fa fa-sitemap fa-2x"></i>
-            Digital Logic
+      <div class="row fade-up delay-3" style="display:flex; flex-wrap:wrap; justify-content:center;">
+        <div class="col-sm-4 col-md-2">
+          <a class="subject-card" href="https://drive.google.com/drive/folders/1C5kT04GCFcmwqf2ZH5v_lrukHaLXvL6q" target="_blank">
+            <i class="fa fa-sitemap"></i><span>Digital Logic</span>
           </a>
         </div>
-
-        <div class="col-sm-4 col-md-2 zoom-sm">
-          <a href="https://drive.google.com/file/d/1X_xXDAjauij5un26ZZyEPyJ-ptb-iEML/view?usp=drivesdk" target="_blank">
-            <i class="fa fa-desktop fa-2x"></i>
-            Operating Systems
+        <div class="col-sm-4 col-md-2">
+          <a class="subject-card" href="https://drive.google.com/file/d/1X_xXDAjauij5un26ZZyEPyJ-ptb-iEML/view?usp=drivesdk" target="_blank">
+            <i class="fa fa-desktop"></i><span>Operating Systems</span>
           </a>
         </div>
-
-        <div class="col-sm-4 col-md-2 zoom-sm">
-          <a href="https://drive.google.com/drive/folders/1_J6E5zOwwQ_6PrHfh2WudcFpU50IkUdi" target="_blank">
-            <i class="fa fa-database fa-2x"></i>
-            Databases
+        <div class="col-sm-4 col-md-2">
+          <a class="subject-card" href="https://drive.google.com/drive/folders/1_J6E5zOwwQ_6PrHfh2WudcFpU50IkUdi" target="_blank">
+            <i class="fa fa-database"></i><span>Databases</span>
           </a>
         </div>
-
-        <div class="col-sm-4 col-md-2 zoom-sm">
-          <a href="https://drive.google.com/drive/folders/1vsKwHXBQkB__UOmXily8istK7ZGgdQaQ" target="_blank">
-            <i class="fa fa-wifi fa-2x"></i>
-            Networking
+        <div class="col-sm-4 col-md-2">
+          <a class="subject-card" href="https://drive.google.com/drive/folders/1vsKwHXBQkB__UOmXily8istK7ZGgdQaQ" target="_blank">
+            <i class="fa fa-wifi"></i><span>Networking</span>
           </a>
         </div>
-
-        <div class="col-sm-4 col-md-2 zoom-sm">
-          <a href="https://drive.google.com/file/d/1IA6Yvw2__sLBAnvArPAiJNqVwks46AzQ/view?usp=drivesdk" target="_blank">
-            <i class="fa fa-superscript fa-2x"></i>
-            Linear Algebra
+        <div class="col-sm-4 col-md-2">
+          <a class="subject-card" href="https://drive.google.com/file/d/1IA6Yvw2__sLBAnvArPAiJNqVwks46AzQ/view?usp=drivesdk" target="_blank">
+            <i class="fa fa-superscript"></i><span>Linear Algebra</span>
           </a>
         </div>
-
-        <div class="col-sm-4 col-md-2 zoom-sm">
-          <a href="https://drive.google.com/file/d/1pYyAtvvGeXtvCj6Uuo6_uuUysDMYujTu/view?usp=drivesdk" target="_blank">
-            <i class="fa fa-line-chart fa-2x"></i>
-            Calculus
+        <div class="col-sm-4 col-md-2">
+          <a class="subject-card" href="https://drive.google.com/file/d/1pYyAtvvGeXtvCj6Uuo6_uuUysDMYujTu/view?usp=drivesdk" target="_blank">
+            <i class="fa fa-line-chart"></i><span>Calculus</span>
           </a>
         </div>
-
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- PROJECTS -->
-  <div class="parallax" id="pj" style="background-image: url('images/ph1'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <h2>Projects</h2>
-    <div class="container section-body">
+  <div class="section-divider"></div>
 
-      <!-- Featured: Simple RISC-V Processor -->
-      <div class="row" style="margin-bottom: 40px;">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="dark-card" style="text-align: center;">
-            <h3 style="font-size: 1.8em; margin-bottom: 10px;">
-              <i class="fa fa-th"></i>&nbsp; Simple RISC-V Processor
-            </h3>
-            <p style="font-size: 1.1em; margin-bottom: 16px; opacity: 0.85;">
-              Simulated in Logisim — supports 20 instructions, executes assembly programs.
-              Every digital component laid out and connected by hand; runs factorial in Simple RISC assembly.
+  <!-- ── PROJECTS ───────────────────────────────────── -->
+  <section id="pj">
+    <div class="container">
+      <h2 class="section-title fade-up">Projects</h2>
+      <div class="title-bar fade-up delay-1"></div>
+
+      <!-- RISC-V featured -->
+      <div class="row fade-up delay-2">
+        <div class="col-md-10 col-md-offset-1" style="margin-bottom:24px;">
+          <div class="project-card">
+            <h3><i class="fa fa-th"></i>Simple RISC-V Processor</h3>
+            <p>
+              Designed and simulated in Logisim — every digital component laid out and connected by hand.
+              Supports 20 instructions; executes assembly programs including factorial in Simple RISC assembly.
             </p>
             <img src="https://raw.githubusercontent.com/AnirudhChandupatla/CS/main/Computer_Organization_and_Architecture/simple_risc_cpu_factorial_execution.gif"
-                 alt="RISC-V processor executing factorial program in Logisim"
-                 loading="lazy"
-                 style="max-width: 100%; max-height: 440px; border-radius: 8px; margin: 10px 0 20px 0; border: 2px solid rgba(255,255,255,0.2);">
-            <br>
-            <a href="https://github.com/AnirudhChandupatla/CS/tree/main/Computer_Organization_and_Architecture"
-               target="_blank" class="btn"
-               style="background: rgba(0,80,0,0.6); padding: 10px 22px; font-size: 1.1em; display: inline-block;">
-              <i class="fa fa-github"></i>&nbsp; View on GitHub
+                 alt="RISC-V processor executing factorial in Logisim"
+                 loading="lazy">
+            <div style="margin-top:8px;">
+              <a href="https://github.com/AnirudhChandupatla/CS/tree/main/Computer_Organization_and_Architecture"
+                 target="_blank" class="btn-modern btn-purple">
+                <i class="fa fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADP GenAI -->
+      <div class="row fade-up delay-3">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="project-card" style="opacity:0.62;">
+            <h3><i class="fa fa-cogs"></i>ADP GenAI Document Extractor</h3>
+            <p>
+              Multimodal LLM-powered document schema analyzer &amp; self-correcting data extractor — 95–99% accuracy.
+              <br><em style="color:var(--muted);">Internal enterprise project</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── CONTACTS ───────────────────────────────────── -->
+  <section id="cn">
+    <div class="container">
+      <h2 class="section-title fade-up">Contacts</h2>
+      <div class="title-bar fade-up delay-1"></div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <form action="https://formspree.io/anirudhchandupatla99@gmail.com" method="POST"
+                class="contact-form fade-up delay-2">
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="fname">Name</label>
+                <input type="text" id="fname" name="firstname">
+              </div>
+              <div class="col-sm-6">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email">
+              </div>
+            </div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+            <input type="submit" value="Send Message">
+          </form>
+
+          <div class="social-links fade-up delay-3">
+            <a href="https://github.com/AnirudhChandupatla" target="_blank" class="social-link">
+              <i class="fa fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/anirudh-reddy-chandupatla/" target="_blank" class="social-link">
+              <i class="fa fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:anirudhchandupatla99@gmail.com" class="social-link">
+              <i class="fa fa-envelope"></i> Email
             </a>
           </div>
         </div>
       </div>
-
-      <!-- ADP GenAI (internal) -->
-      <div class="row" style="justify-content: center;">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="dark-card" style="text-align: center; opacity: 0.65;">
-            <h3 style="font-size: 1.4em;">
-              <i class="fa fa-cogs"></i>&nbsp; ADP GenAI Document Extractor
-            </h3>
-            <p style="font-size: 1em;">
-              Multimodal LLM-powered document schema analyzer &amp; self-correcting data extractor — 95–99% accuracy.
-              <br><em>(Internal enterprise project)</em>
-            </p>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
+  </section>
 
-  <!-- CONTACTS -->
-  <div class="parallax" id="cn" style="background-image: url('images/ph4'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
-    <h2 style="padding-top: 100px; padding-bottom: 60px;">Contacts</h2>
-    <div class="container" id="txtcn">
-      <form action="https://formspree.io/anirudhchandupatla99@gmail.com" method="POST">
-        <div class="row">
-          <div class="col-md-6">
-            <label for="fname">Name</label>
-            <input type="text" id="fname" name="firstname">
-          </div>
-          <div class="col-md-6">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email">
-          </div>
-        </div>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" style="height:200px; color:black; font-family:monospace;"></textarea>
-        <input type="submit" value="Submit">
-      </form>
-    </div>
-    <div class="container" style="display: block; padding-top: 50px; padding-bottom: 60px;">
-      <ul style="padding: 0px">
-        <li><a href="https://github.com/AnirudhChandupatla"><div class="col-md-3"><img src="images/gh.png" alt="GitHub"></div></a></li>
-        <li><a href="https://www.linkedin.com/in/anirudh-reddy-chandupatla/"><div class="col-md-3"><img src="images/in.png" alt="LinkedIn"></div></a></li>
-      </ul>
-    </div>
-  </div>
+  <script>
+    // IntersectionObserver: trigger .fade-up on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $('.btn').click(function() {
-      var target = $(this.hash);
-      if (target.length) {
-        $('body,html').animate({ scrollTop: target.offset().top }, 2500);
-      }
+    // Nav: smooth scroll for anchor links
+    document.querySelectorAll('.site-nav a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
     });
+
+    // Hero CTA buttons smooth scroll
+    document.querySelectorAll('.hero-cta a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Nav background intensifies on scroll
+    const nav = document.querySelector('.site-nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 40
+        ? 'rgba(8,8,18,0.85)'
+        : 'rgba(8,8,18,0.55)';
+    }, { passive: true });
   </script>
 
 </body>
